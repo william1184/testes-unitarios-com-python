@@ -39,6 +39,8 @@ class TestLambdaHandler(TestCase):
         # ASSERT
         self.assertEqual(200, response['statusCode'])
 
+    # O DOCUMENTO ESTA SOMENTE NAO PREENCHIDO ?
+    # ESSE CENARIO CONTEMPLA TODAS AS FORMAS DE NAO-PREENCHIDO? VAZIO, NULO E CHAVE INEXISTENTE?
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_campo_documento_nao_preenchido__entao_retorna_excecao(
@@ -63,6 +65,8 @@ class TestLambdaHandler(TestCase):
                 'documento': ''
             }, context={})
 
+    # O EMAIL ESTA SOMENTE NAO PREENCHIDO ?
+    # ESSE CENARIO CONTEMPLA TODAS AS FORMAS DE NAO-PREENCHIDO? VAZIO, NULO E CHAVE INEXISTENTE?
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_campo_email_nao_preenchido__entao_retorna_excecao(

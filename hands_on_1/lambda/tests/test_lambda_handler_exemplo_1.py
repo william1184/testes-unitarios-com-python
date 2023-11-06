@@ -23,6 +23,7 @@ class TestLambdaHandler(TestCase):
         mock_email_service.enviar.return_value = True  # enviado
 
         # COMENTARIO PARA VERIFICAR A INSTANCIA
+        # MOSTRA A INSTANCIA NAO EH DO TIPO MAGICMOCK
         # print(lambda_function.cliente_service)
 
         # ACT

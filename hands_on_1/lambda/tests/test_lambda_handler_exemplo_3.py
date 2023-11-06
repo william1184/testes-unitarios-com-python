@@ -10,7 +10,7 @@ class TestLambdaHandler(TestCase):
     # NESTES EXEMPLOS VAMOS VERIFICAR SE ESTAMOS REALMENTE TESTANDO COMPORTAMENTO
 
     # O TESTE FUNCIONA....
-    # O NOME DO TESTE FALA REALMENTE O COMPORTAMENTO ESPERADO EM CASO DE SUCESSO? PS. ELE ENVIA EMAIL EM CASO DE SUCESSO
+    # FALTA MELHORAR O TESTE DE COMPORTAMENTO
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_campos_obrigatorios_preenchidos_e_cliente_existe__entao_envia_email_e_retorna_200(
@@ -35,6 +35,8 @@ class TestLambdaHandler(TestCase):
         # ASSERT
         self.assertEqual(200, response['statusCode'])
 
+    # QUANDO TESTAMOS UMA EXCECAO GENERICA COMO PODEMOS TER CERTEZA QUE ELA ESTA
+    # SENDO DEVOLVIDA PELO MOTIVO ESPERADO? Rsp: testando a mensagem da excecao
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_campo_documento_vazio__entao_retorna_excecao_value_error(
@@ -62,6 +64,8 @@ class TestLambdaHandler(TestCase):
         # PODERIAMOS MELHORAR O ASSERT?
         # self.assertEqual('Documento Invalido', context.exception.args[0])
 
+    # QUANDO TESTAMOS UMA EXCECAO GENERICA COMO PODEMOS TER CERTEZA QUE ELA ESTA
+    # SENDO DEVOLVIDA PELO MOTIVO ESPERADO? Rsp: testando a mensagem da excecao
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_campo_documento_nulo__entao_retorna_excecao_value_error(
@@ -89,6 +93,8 @@ class TestLambdaHandler(TestCase):
         # PODERIAMOS MELHORAR O ASSERT?
         # self.assertEqual('Documento Invalido', context.exception.args[0])
 
+    # QUANDO TESTAMOS UMA EXCECAO GENERICA COMO PODEMOS TER CERTEZA QUE ELA ESTA
+    # SENDO DEVOLVIDA PELO MOTIVO ESPERADO? Rsp: testando a mensagem da excecao
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_sem_campo_documento__entao_retorna_excecao_value_error(
@@ -114,6 +120,8 @@ class TestLambdaHandler(TestCase):
         # PODERIAMOS MELHORAR O ASSERT?
         # self.assertEqual('Documento Invalido', context.exception.args[0])
 
+    # QUANDO TESTAMOS UMA EXCECAO GENERICA COMO PODEMOS TER CERTEZA QUE ELA ESTA
+    # SENDO DEVOLVIDA PELO MOTIVO ESPERADO? Rsp: testando a mensagem da excecao
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_campo_email_vazio__entao_retorna_excecao_value_error(
@@ -142,6 +150,8 @@ class TestLambdaHandler(TestCase):
         # PODERIAMOS MELHORAR O ASSERT?
         # self.assertEqual('Email Invalido', context.exception.args[0])
 
+    # QUANDO TESTAMOS UMA EXCECAO GENERICA COMO PODEMOS TER CERTEZA QUE ELA ESTA
+    # SENDO DEVOLVIDA PELO MOTIVO ESPERADO? Rsp: testando a mensagem da excecao
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_campo_email_nulo__entao_retorna_excecao_value_error(
@@ -170,6 +180,8 @@ class TestLambdaHandler(TestCase):
         # PODERIAMOS MELHORAR O ASSERT?
         # self.assertEqual('Email Invalido', context.exception.args[0])
 
+    # QUANDO TESTAMOS UMA EXCECAO GENERICA COMO PODEMOS TER CERTEZA QUE ELA ESTA
+    # SENDO DEVOLVIDA PELO MOTIVO ESPERADO? Rsp: testando a mensagem da excecao
     @mock.patch('src.service.cliente_service.ClienteService')
     @mock.patch('src.service.email_service.EmailService')
     def test_handler__caso_sem_campo_email__entao_retorna_excecao_value_error(

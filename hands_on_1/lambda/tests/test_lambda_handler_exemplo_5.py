@@ -2,6 +2,8 @@ import sys
 from unittest import TestCase, mock
 from unittest.mock import MagicMock
 
+from src.exception.ClienteNaoExisteException import ClienteNaoExisteException
+
 
 # CLASSE COM TESTE FUNCIONAIS COM NOMES MELHORES E TESTA COMPORTAMENTO e MENOS DUPLICACOES:
 class TestLambdaHandler(TestCase):
@@ -54,6 +56,27 @@ class TestLambdaHandler(TestCase):
         # Podemos verificar se os metodos foram invocados
         self._mock_cliente_service().consultar.assert_called_once()
         self._mock_email_service().enviar.assert_called_once()
+
+    def test_handler__caso_campos_obrigatorios_preenchidos_e_cliente_nao_existe__entao_retornar_excecao_cliente_nao_existe(
+            self
+    ):
+        # ARRANGE
+        self._mock_cliente_service().consultar.return_value = None
+
+        event_valido = {
+            'documento': '72705746000101',
+            'email': 'cliente@email.com.br'
+        }
+
+        # ACT e ASSERT
+        with self.assertRaises(ClienteNaoExisteException) as context:
+            self._lambda_handler(event=event_valido, context={})
+
+        self.assertEqual('Cliente nao existe: 72705746000101', context.exception.args[0])
+
+        # Podemos verificar se os metodos foram invocados
+        self._mock_cliente_service().consultar.assert_called_once()
+        self._mock_email_service().enviar.assert_not_called()
 
     def test_handler__caso_campo_documento_vazio__entao_retorna_excecao_value_error(
             self,
