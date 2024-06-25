@@ -9,6 +9,10 @@ email_service = EmailService()
 
 
 def lambda_handler(event: dict, context: LambdaContext) -> dict:
+
+    if not isinstance(event, dict):
+        raise ValueError('Evento invalido')
+
     # SE EU COMENTAR ESTA LINHA ? DURANTE O TESTE 2 DO EXEMPLO 2?
     if 'documento' not in event or \
             event['documento'] is None or \
